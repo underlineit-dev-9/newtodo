@@ -18,21 +18,21 @@ test("Rendering h3 tag", () => {
   
 // })
 
-// test("Rendering h4 tag", () => {
-//   render(<App />);
-//   const task1 = screen.getByText(/task 1/i);
-//   expect(task1).toBeInTheDocument();
+test("Rendering h4 tag", () => {
+  render(<App />);
+  const task1 = screen.getByText(/task 1/i);
+  expect(task1).toBeInTheDocument();
 
-//   const task2 = screen.getByText(/task 2/i);
-//   expect(task2).toBeInTheDocument();
+  const task2 = screen.getByText(/task 2/i);
+  expect(task2).toBeInTheDocument();
 
-//   const task3 = screen.getByText(/task 3/i);
-//   expect(task3).toBeInTheDocument();
+  const task3 = screen.getByText(/task 3/i);
+  expect(task3).toBeInTheDocument();
 
-//   const task4 = screen.getByText(/task 4/i);
-//   expect(task4).toBeInTheDocument();
+  const task4 = screen.getByText(/task 4/i);
+  expect(task4).toBeInTheDocument();
   
-// });
+});
 
 
 
