@@ -6,62 +6,11 @@ import React from "react";
 
 class Task extends React.Component{
   render(){
-  const [canEdit, setCanEdit] = React.useState(false);
-  const [newTask, setNewTask] = React.useState(this.task);
-  // const renderCount = useRef(0);
-  // renderCount.current++;
-  // console.log(`task ${index+1} render ${renderCount.current} `)
-  // console.log(`task :${task}`);
+  
   return (
     <div>
-      {
-        <div>
-          <div title="displayingTask">
-            {canEdit ? (
-              <div>
-                <input
-                  type="text"
-                  value={newTask}
-                  onChange={(e) => setNewTask(e.target.value)}
-                  data-testid="EditInputId"
-                />
-                <button
-                  onClick={() => {
-                    this.submitHandler(newTask, this.index);
-                    setCanEdit(false);
-                  }}
-                  data-testid='submit-button'
-                >
-                  Submit
-                </button>
-                &nbsp;
-                <button
-                  onClick={() => {
-                    setNewTask(this.task);
-                    setCanEdit(false);
-                  }}
-                  data-testid="cancel-button"
-                >
-                  Cancel
-                </button>
-              </div>
-            ) : (
-              <h4>
-                {" "}
-                {this.index + 1}. {this.task}
-              </h4>
-            )}
-            &nbsp;
-            <button data-testid='edit-button' onClick={() => setCanEdit(true)}>Edit</button>
-            <button
-              onClick={() => this.deleteHandler(this.index)}
-              data-testid={`delete-button-${this.index}`}
-            >
-              Delete
-            </button>
-          </div>
-        </div>
-      }
+    <h5>hii this is test</h5>
+     {this.task}
     </div>
   );
 };
