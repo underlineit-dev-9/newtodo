@@ -1,22 +1,64 @@
 // import React,{useRef} from "react";
-import React from "react";
+import React, { Component } from 'react'
+
+export default class Task extends Component {
+  state = {
+    canEdit:false,
+    editedTask:this.props.task
+  }
+  render() {
+    return (
+      <div>
+      {
+      <div>{
+        this.state.canEdit ? (
+          <div>
+            <input
+            type='text'
+            value={this.editedTask}
+            onChange={(e) => this.setState({
+              editedTask:e.target.value
+            })} />
+            <button
+            onClick={()=>{this.props.submitHandler(this.state.editedTask,index);
+            this.setState({
+              canEdit:false
+            })
+            }}>
+
+            Submit
+            </button>
+
+            <button
+            onClick={()=>{this.setState({
+              editedTask:this.props.task
+            })
+            this.setState({
+              canEdit:false
+            })
+            }}
+            >cancel</button>
+        </div>
+        )
+            :
+            (<h5>
+              {this.props.index} .{this.props.task}
+            </h5>
+            )
+      }
+      <button 
+      onClick={() => this.props.deleteHandler(index)}
+      >
+        Delete
+      </button>
+      </div>
+    }
+      </div>
+    )
+  }
+}
 
 
-
-
-class Task extends React.Component{
-  render(){
-  
-  return (
-    <div>
-    <h5>hii this is test</h5>
-     {this.task}
-    </div>
-  );
-};
-};
-
-export default Task;
 
 // import { render, fireEvent } from "@testing-library/react";
 // import Task from "./task";
