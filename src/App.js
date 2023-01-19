@@ -33,6 +33,7 @@ function App() {
 
     setTasks(
       tasks.map((task, i) => {
+        
         if (i !== index) {
           return task;
         }
