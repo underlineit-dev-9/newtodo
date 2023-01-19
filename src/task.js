@@ -4,16 +4,10 @@ import React from "react";
 
 
 
-const Task = ({
-  task,
-  index,
-  deleteHandler,
-  tasks,
-  submitHandler,
-  
-}) => {
+class Task extends React.Component{
+  render(){
   const [canEdit, setCanEdit] = React.useState(false);
-  const [newTask, setNewTask] = React.useState(task);
+  const [newTask, setNewTask] = React.useState(this.task);
   // const renderCount = useRef(0);
   // renderCount.current++;
   // console.log(`task ${index+1} render ${renderCount.current} `)
@@ -33,7 +27,7 @@ const Task = ({
                 />
                 <button
                   onClick={() => {
-                    submitHandler(newTask, index);
+                    this.submitHandler(newTask, this.index);
                     setCanEdit(false);
                   }}
                   data-testid='submit-button'
@@ -43,7 +37,7 @@ const Task = ({
                 &nbsp;
                 <button
                   onClick={() => {
-                    setNewTask(task);
+                    setNewTask(this.task);
                     setCanEdit(false);
                   }}
                   data-testid="cancel-button"
@@ -54,14 +48,14 @@ const Task = ({
             ) : (
               <h4>
                 {" "}
-                {index + 1}. {task}
+                {this.index + 1}. {this.task}
               </h4>
             )}
             &nbsp;
             <button data-testid='edit-button' onClick={() => setCanEdit(true)}>Edit</button>
             <button
-              onClick={() => deleteHandler(index)}
-              data-testid={`delete-button-${index}`}
+              onClick={() => this.deleteHandler(this.index)}
+              data-testid={`delete-button-${this.index}`}
             >
               Delete
             </button>
@@ -71,5 +65,74 @@ const Task = ({
     </div>
   );
 };
+};
 
 export default Task;
+
+// import { render, fireEvent } from "@testing-library/react";
+// import Task from "./task";
+// import App from "./App";
+
+// test("testing delete button and fucntion calling", () => {
+//   const mockDeleteHandlerdFun = jest.fn();
+//   let index=2;
+//   const { getByTestId } = render(
+//     <Task deleteHandler={mockDeleteHandlerdFun}
+//     index={index}
+//      />
+//   );
+//   const button = getByTestId(`delete-button-${index}`);
+//   fireEvent.click(button);
+//   expect(mockDeleteHandlerdFun).toHaveBeenCalled();
+// });
+
+
+// test("input from Edit Button value ", () => {
+
+//     const { getByTestId } = render(<Task/>);
+
+//     const editButton=getByTestId('edit-button')
+//     fireEvent.click(editButton)  
+
+
+//     const input = getByTestId("EditInputId");
+//     fireEvent.change(input, { target: { value: "new text entered" } });
+//     expect(input.value).toBe("new text entered");
+
+//   });
+// test("testing the submit button and function calling" ,()=>{
+
+//     const mockSubmitHandler = jest.fn();
+//     const {getByTestId}=render(<Task
+//       submitHandler={mockSubmitHandler}
+//     />)
+
+//     const editButton=getByTestId('edit-button')
+//     fireEvent.click(editButton) 
+
+//     const button = getByTestId('submit-button');
+//     fireEvent.click(button);
+//     expect(mockSubmitHandler).toHaveBeenCalled()
+
+  
+
+//   })
+
+// test ("testing the cancel button",()=>{
+//   const { getByTestId } = render(<Task/>);
+
+//   const editButton=getByTestId('edit-button')
+//   fireEvent.click(editButton)  
+
+//   const input = getByTestId("EditInputId");
+//   fireEvent.change(input, { target: { value: "new text entered" } });
+//   expect(input.value).toBe("new text entered");
+
+//   const cancelButton = getByTestId("cancel-button");
+//   fireEvent.click(cancelButton);
+//   render(<App/>)
+
+//   const editedTask = screen.querryByText(input.value)
+
+//   expect(editedTask).not.TobeInTheDocumet()
+// })
