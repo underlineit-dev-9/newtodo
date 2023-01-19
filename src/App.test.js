@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, getAllByTestId,userEvent } from "@testing-library/react";
 // import userEvent from "@testing-library/user-event";
 import App from "./App";
 
@@ -7,6 +7,16 @@ test("Rendering h3 tag", () => {
   const taskElement = screen.getByText(/To Do Management System/i);
   expect(taskElement).toBeInTheDocument();
 });
+// test ("testing the change button " ,()=>{
+//   render(<App/>)
+//   const changeBtn = screen.getByTestId("change-button")
+//   fireEvent.click(changeBtn);
+//   const user1 = screen.queryByText(/Sai kumar/i);
+//   expect(user1).not.toBeInTheDocument()
+//   const user2 = screen.queryByText(/sidhu/i)
+//   expect(user2).toBeInTheDocument()
+  
+// })
 
 // test("Rendering h4 tag", () => {
 //   render(<App />);
