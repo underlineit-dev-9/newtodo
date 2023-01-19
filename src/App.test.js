@@ -45,10 +45,5 @@ test("input from add value ", () => {
   fireEvent.change(input, { target: { value: "new text entered" } });
   expect(input.value).toBe("new text entered");
 
-  // const button=screen.getAllByTestId('add-button')
-  // fireEvent.click(button)
-
-  // const inputTask = screen.queryByText(/new text entered/i)
-  // expect(inputTask).toBeInTheDocument()
 });
 
