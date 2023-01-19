@@ -22,7 +22,7 @@ export default class App extends Component {
   //   })
   // }
   deleteHandler(index){
-
+    console.log("line in dh")
     const tempArray = _.remove(this.state.todoTasks,(task)=>{
       return this.state.todoTasks.indexOf(task)!==index;
     });
@@ -47,6 +47,7 @@ export default class App extends Component {
     <div>
       <center>
         <h3> To Do Management System</h3>
+        
         <input 
         type='text'
         placeholder='Enter your tasks'
@@ -54,7 +55,8 @@ export default class App extends Component {
         onChange={(e)=>this.setState({
           newTask:e.target.value
           
-        })}/>
+        })}
+        data-testid='inputId'/>
         <button 
         type="button"
         onClick={() =>{
@@ -67,19 +69,13 @@ export default class App extends Component {
         }}>
         Add
         </button>
-        <p>{this.state.todoTasks}</p>
-        <div>hi
-        {this.state.todoTasks.forEach((task)=>{
-          <div><Task todoTasks={task}
-            deleteHandler={this.deleteHandler}
-            submitHandler={this.submitHandler}
-          />
-          </div>
+        <p>{this.state.todoTasks.map((task,index) =><Task todoTasks={task}
+        deleteHandler={this.deleteHandler}
+        submitHandler={this.submitHandler}
+        task={task}
+        index={index}
+      />)}</p>
 
-        })
-        }
-        
-        </div>
       </center>
     </div>
   );

@@ -18,7 +18,7 @@ test("Rendering h3 tag", () => {
   
 // })
 
-test("Rendering h4 tag", () => {
+test("Rendering h5 tag", () => {
   render(<App />);
   const task1 = screen.getByText(/task 1/i);
   expect(task1).toBeInTheDocument();
@@ -48,12 +48,15 @@ test("Rendering h4 tag", () => {
 //   expect(task3).not.toBeInTheDocument();
 // });
 
-// test("input from add value ", () => {
-  
-//   const { getByTestId } = render(<App/>);
-//   const input = getByTestId("inputId");
-//   fireEvent.change(input, { target: { value: "new text entered" } });
-//   expect(input.value).toBe("new text entered");
 
-// });
+test("input from add value ", () => {
+  
+  const { getByTestId } = render(<App/>);
+  const input = getByTestId("inputId");
+  fireEvent.change(input, { target: { value: "new text entered" } });
+  expect(input.value).toBe("new text entered");
+
+
+
+});
 
