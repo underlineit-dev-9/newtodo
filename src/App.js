@@ -35,6 +35,9 @@ export default class App extends Component {
 
   }
   submitHandler (newTask,index){
+    if(newTask===''){
+      alert("you are not allowed to use empty box")
+    }else{
     console.log(`newTask : ${newTask} index: ${index}`)
     this.setState({
       todoTasks:this.state.todoTasks.map((task,i)=>{
@@ -44,7 +47,7 @@ export default class App extends Component {
         return newTask
       })
     })
-  }
+  }}
 
   render = () => (
     <div>
@@ -63,12 +66,17 @@ export default class App extends Component {
         <button 
         type="button"
         onClick={() =>{
+          if(this.state.newTask===''){
+            alert("you are not allowed to enter empty box")
+          }else{
           this.setState({
-            todoTasks:_.concat(this.state.todoTasks,this.state.newTask)
+            todoTasks:_.concat(this.state.todoTasks,this.state.newTask),
+            newTask:""
           })
-          this.setState({
-            newTask:''
-          })
+        }
+          // this.setState({
+          //   newTask:''
+          // })
         }}>
         Add
         </button>
