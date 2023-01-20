@@ -1,19 +1,11 @@
-// import React,{useRef} from "react";
 import React from "react";
-import useTasks from "./hooks/useTasks";
-import _ from "lodash";
 
-const Task = ({ index }) => {
-  const { tasks, deleteHandler, submitHandler } = useTasks();
-  const task = _.get(tasks, index, "");
+const Task = ({ index,submitHandler,deleteHandler ,task}) => {
 
   const [canEdit, setCanEdit] = React.useState(false);
   const [newTask, setNewTask] = React.useState(task);
 
-  // const renderCount = useRef(0);
-  // renderCount.current++;
-  // console.log(`task ${index+1} render ${renderCount.current} `)
-  // console.log(`task :${task}`);
+  
   return (
     <div>
       {
@@ -29,8 +21,12 @@ const Task = ({ index }) => {
                 />
                 <button
                   onClick={() => {
+                    if(newTask===''){
+                      alert("you are not allowed to enter empty box")
+                    }else{
                     submitHandler(newTask, index);
                     setCanEdit(false);
+                    }
                   }}
                   data-testid="submit-button"
                 >

@@ -18,10 +18,14 @@ function useTasks() {
 
   function submitHandler(newTask, index) {
     setTasks(
-      _.set(tasks, index, newTask)
+      tasks.map((task, i) => {
+        if (i !== index) {
+          return task;
+        }
+        return newTask;
+      })
     );
   }
-  console.log("tasks line in usetask", tasks);
 
   return { tasks, submitHandler, deleteHandler, addHandler };
 }
