@@ -5,7 +5,7 @@ import useTasks from "./hooks/useTasks";
 
 function App() {
   const [newMainTask, setNewMainTask] = useState("");
-  const { tasks, addHandler, submitHandler, deleteHandler } = useTasks();
+  const {tasks, addHandler, submitHandler, deleteHandler } = useTasks();
   return (
     <div>
       <div>
