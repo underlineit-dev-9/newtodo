@@ -1,49 +1,14 @@
-// import { useState,useRef } from "react";
 import { useState } from "react";
 import "./App.css";
 import Task from "./task";
-import _ from "lodash";
-
-// var _ = require('lodash');
+import useTasks from "./hooks/useTasks";
 
 function App() {
   const [newMainTask, setNewMainTask] = useState("");
-  const [tasks, setTasks] = useState(["task 1", "task 2", "task 3", "task 4"]);
 
-  function deleteHandler(index) {
-    const tempArray = _.remove(tasks, (element) => {
-      return tasks.indexOf(element) !== index;
-    });
-    // console.log(`task ${tasks} index ${index}`)
+  const { tasks, addHandler } = useTasks();
 
-    // for (let i = 0; i < tasks.length; i++) {
-    //   if (index === i) {
-    //     continue;
-    //   }
-    //   tempArray.push(tasks[i])
-    // }
-    // console.log(tempArray ,'temparray')
-    setTasks(tempArray);
-  }
-
-  function submitHandler(newTask, index) {
-    // tasks[index] = newTask;
-    // const tempArray= tasks
-    // console.log("line indie sh", tempArray);
-
-    setTasks(
-      tasks.map((task, i) => {
-        if (i !== index) {
-          return task;
-        }
-        return newTask;
-      })
-    );
-  }
-
-  // const renderCount = useRef(0);
-  // renderCount.current++;
-  // console.log(`App render ${renderCount.current}`)
+  console.log(`tasks `, tasks);
 
   return (
     <div>
@@ -63,20 +28,14 @@ function App() {
             type="button"
             data-testid="add-button"
             onClick={() => {
-              setTasks(_.concat(tasks, newMainTask));
+              addHandler(newMainTask);
               setNewMainTask("");
             }}
           >
             Add
           </button>
           {tasks.map((task, index) => (
-            <Task
-              task={task}
-              index={index}
-              deleteHandler={deleteHandler}
-              submitHandler={submitHandler}
-              tasks={tasks}
-            />
+            <Task task={task} index={index} tasks={tasks} />
           ))}
         </center>
       </div>

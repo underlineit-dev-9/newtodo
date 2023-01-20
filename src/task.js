@@ -1,5 +1,6 @@
 // import React,{useRef} from "react";
 import React from "react";
+import useTasks from "./hooks/useTasks";
 
 
 
@@ -7,13 +8,15 @@ import React from "react";
 const Task = ({
   task,
   index,
-  deleteHandler,
-  tasks,
-  submitHandler,
+  
+  
   
 }) => {
   const [canEdit, setCanEdit] = React.useState(false);
   const [newTask, setNewTask] = React.useState(task);
+
+  const {deleteHandler,submitHandler} = useTasks()
+
   // const renderCount = useRef(0);
   // renderCount.current++;
   // console.log(`task ${index+1} render ${renderCount.current} `)
