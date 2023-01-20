@@ -1,21 +1,14 @@
 // import React,{useRef} from "react";
 import React from "react";
 import useTasks from "./hooks/useTasks";
+import _ from "lodash";
 
+const Task = ({ index }) => {
+  const { tasks, deleteHandler, submitHandler } = useTasks();
+  const task = _.get(tasks, index, "");
 
-
-
-const Task = ({
-  task,
-  index,
-  
-  
-  
-}) => {
   const [canEdit, setCanEdit] = React.useState(false);
   const [newTask, setNewTask] = React.useState(task);
-
-  const {deleteHandler,submitHandler} = useTasks()
 
   // const renderCount = useRef(0);
   // renderCount.current++;
@@ -39,7 +32,7 @@ const Task = ({
                     submitHandler(newTask, index);
                     setCanEdit(false);
                   }}
-                  data-testid='submit-button'
+                  data-testid="submit-button"
                 >
                   Submit
                 </button>
@@ -61,7 +54,9 @@ const Task = ({
               </h4>
             )}
             &nbsp;
-            <button data-testid='edit-button' onClick={() => setCanEdit(true)}>Edit</button>
+            <button data-testid="edit-button" onClick={() => setCanEdit(true)}>
+              Edit
+            </button>
             <button
               onClick={() => deleteHandler(index)}
               data-testid={`delete-button-${index}`}

@@ -4,7 +4,6 @@ import _ from "lodash";
 function useTasks() {
   const [tasks, setTasks] = useState(["task 1", "task 2", "task 3", "task 4"]);
 
-  //   const [tasksArray, setTasks] = useState(todoTasks);
   function addHandler(newTask) {
     setTasks(_.concat(tasks, newTask));
   }
@@ -19,12 +18,7 @@ function useTasks() {
 
   function submitHandler(newTask, index) {
     setTasks(
-      tasks.map((task, i) => {
-        if (i !== index) {
-          return task;
-        }
-        return newTask;
-      })
+      _.set(tasks, index, newTask)
     );
   }
   console.log("tasks line in usetask", tasks);
