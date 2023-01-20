@@ -30,7 +30,10 @@ function App() {
     // tasks[index] = newTask;
     // const tempArray= tasks
     // console.log("line indie sh", tempArray);
-
+    if(newTask===''){
+      alert("you are not allowed to enter empty box")
+    }
+    else{
     setTasks(
       tasks.map((task, i) => {
         
@@ -40,7 +43,7 @@ function App() {
         return newTask;
       })
     );
-  }
+  }}
 
   // const renderCount = useRef(0);
   // renderCount.current++;
@@ -57,16 +60,19 @@ function App() {
             data-testid="inputId"
             class="inputClass"
             value={newMainTask}
-            onChange={(e) => setNewMainTask(e.target.value)}
+            onChange={(e) => {setNewMainTask(e.target.value)}}
           />{" "}
           &nbsp;
           <button
             type="button"
             data-testid="add-button"
             onClick={() => {
+              if(newMainTask===''){
+                alert("you are not allowed to use empty box")
+              }else{
               setTasks(_.concat(tasks, newMainTask));
               setNewMainTask("");
-            }}
+            }}}
           >
             Add
           </button>
