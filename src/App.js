@@ -1,15 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import Task from "./task";
 import useTasks from "./hooks/useTasks";
 
-function App() {
+const App = () => {
+  const { tasks, addHandler, deleteHandler, submitHandler } = useTasks();
   const [newMainTask, setNewMainTask] = useState("");
-
-  const { tasks, addHandler } = useTasks();
-
-  console.log(`tasks `, tasks);
-
+   
   return (
     <div>
       <div>
@@ -35,7 +32,8 @@ function App() {
             Add
           </button>
           {tasks.map((task, index) => (
-            <Task task={task} index={index} tasks={tasks} />
+            <Task task={task} index={index} submitHandler={submitHandler} 
+            deleteHandler={deleteHandler} tasks={tasks} />
           ))}
         </center>
       </div>

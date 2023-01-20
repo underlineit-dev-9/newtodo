@@ -1,12 +1,7 @@
 // import React,{useRef} from "react";
 import React from "react";
-import useTasks from "./hooks/useTasks";
-import _ from "lodash";
 
-const Task = ({ index }) => {
-  const { tasks, deleteHandler, submitHandler } = useTasks();
-  const task = _.get(tasks, index, "");
-
+const Task = ({ task, index, deleteHandler, submitHandler }) => {
   const [canEdit, setCanEdit] = React.useState(false);
   const [newTask, setNewTask] = React.useState(task);
 

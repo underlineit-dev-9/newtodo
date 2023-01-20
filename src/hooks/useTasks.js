@@ -18,7 +18,8 @@ function useTasks() {
 
   function submitHandler(newTask, index) {
     setTasks(
-      _.set(tasks, index, newTask)
+      [...tasks.slice(0, index), newTask, ...tasks.slice(index + 1)]
+      
     );
   }
   console.log("tasks line in usetask", tasks);
