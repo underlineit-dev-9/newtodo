@@ -2,7 +2,6 @@ import React from "react";
 
 const Task = ({ index,submitHandler,deleteHandler ,task}) => {
 
-const Task = ({ task, index, deleteHandler, submitHandler }) => {
   const [canEdit, setCanEdit] = React.useState(false);
   const [newTask, setNewTask] = React.useState(task);
 
