@@ -21,11 +21,13 @@ export default class App extends Component {
   //     userName:this.state.userName === 'Sai kumar' ? 'sidhu' :'Sai kumar',
   //   })
   // }
-  deleteHandler(index){
+  deleteHandler(tasks,index){
     console.log("line in dh")
-    const tempArray = _.remove(this.state.todoTasks,(task)=>{
-      return this.state.todoTasks.indexOf(task)!==index;
+    const tempArray = _.remove(tasks,(task)=>{
+      return tasks.indexOf(task)!==index;
     });
+    console.log(tempArray,"tempArray")
+    console.log("setState before line ")
     this.setState({
       todoTasks:tempArray
     })
@@ -33,6 +35,7 @@ export default class App extends Component {
 
   }
   submitHandler (newTask,index){
+    console.log(`newTask : ${newTask} index: ${index}`)
     this.setState({
       todoTasks:this.state.todoTasks.map((task,i)=>{
         if(i!==index){
@@ -69,12 +72,13 @@ export default class App extends Component {
         }}>
         Add
         </button>
-        <p>{this.state.todoTasks.map((task,index) =><Task todoTasks={task}
+        <div>{this.state.todoTasks.map((task,index) =><Task todoTasks={task}
         deleteHandler={this.deleteHandler}
         submitHandler={this.submitHandler}
+        tasks={this.state.todoTasks}
         task={task}
         index={index}
-      />)}</p>
+      />)}</div> 
 
       </center>
     </div>

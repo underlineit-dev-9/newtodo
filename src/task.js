@@ -15,7 +15,7 @@ export default class Task extends Component {
           <div>
             <input
             type='text'
-            value={this.editedTask}
+            value={this.state.editedTask}
             onChange={(e) => this.setState({
               editedTask:e.target.value
             })} 
@@ -51,7 +51,7 @@ export default class Task extends Component {
             )
       }
       <button 
-      onClick={() => this.props.deleteHandler(this.props.index)}
+      onClick={() => this.props.deleteHandler(this.props.tasks,this.props.index)}
       data-testid={`delete-button-${this.props.index}`}
       >
         Delete
