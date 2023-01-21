@@ -71,7 +71,7 @@ export default class App extends Component {
         <div>
           {this.state.todoTasks.map((task, index) => (
             <Task
-              todoTasks={task}
+            
               deleteHandler={this.deleteHandler}
               submitHandler={this.submitHandler}
               tasks={this.state.todoTasks}
