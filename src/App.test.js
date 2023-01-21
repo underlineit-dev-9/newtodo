@@ -5,8 +5,11 @@ import App from "./App";
 test("Rendering h3 tag", () => {
   render(<App />);
   const taskElement = screen.getByText(/To Do Management System/i);
+  
   expect(taskElement).toBeInTheDocument();
 });
+
+
 
 test("Rendering h4 tag", () => {
   render(<App />);
@@ -31,11 +34,13 @@ test("Rendering h4 tag", () => {
 test("testing delete buttun", () => {
   render(<App />);
   const button2 = screen.getByTestId("delete-button-2");
+  
   userEvent.click(button2);
   const task2 = screen.queryByText(/task 2/i);
   const task3 = screen.queryByText(/task 3/i);
   expect(task2).toBeInTheDocument();
   expect(task3).not.toBeInTheDocument();
+  
 });
 
 test("input from add value ", () => {
@@ -44,6 +49,13 @@ test("input from add value ", () => {
   const input = getByTestId("inputId");
   fireEvent.change(input, { target: { value: "new text entered" } });
   expect(input.value).toBe("new text entered");
+  
+  const addButton  = getByTestId("add-button")
+  fireEvent.click(addButton)
+
+  const editedText = screen.getByText(/new text entered/i);
+
+  expect(editedText).toBeInTheDocument()
 
 });
 

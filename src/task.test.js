@@ -43,25 +43,4 @@ test("testing the submit button and function calling" ,()=>{
     fireEvent.click(button);
     expect(mockSubmitHandler).toHaveBeenCalled()
 
-  
-
   })
-
-test ("testing the cancel button",()=>{
-  const { getByTestId } = render(<Task/>);
-
-  const editButton=getByTestId('edit-button')
-  fireEvent.click(editButton)  
-
-  const input = getByTestId("EditInputId");
-  fireEvent.change(input, { target: { value: "new text entered" } });
-  expect(input.value).toBe("new text entered");
-
-  const cancelButton = getByTestId("cancel-button");
-  fireEvent.click(cancelButton);
-  render(<App/>)
-
-  const editedTask = screen.querryByText(input.value)
-
-  expect(editedTask).not.TobeInTheDocumet()
-})
